@@ -5,6 +5,7 @@ import "core:os"
 import "core:strings"
 import "core:strconv"
 import "core:slice"
+import "core:math"
 
 main :: proc () {
 	data := load_input("input.txt")
@@ -16,14 +17,7 @@ main :: proc () {
 
 	p1: int
 	for i := 0; i < len(data[0]); i+= 1 {
-		left := data[0][i]
-		right := data[1][i]
-		if (left >= right) {
-			p1 += left - right 
-		}
-		else {
-			p1 += right - left 
-		}
+		p1 += math.abs(data[0][i] - data[1][i])
 	}
 	fmt.println("Result Part1:", p1)
 
